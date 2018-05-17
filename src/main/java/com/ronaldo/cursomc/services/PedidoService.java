@@ -17,7 +17,6 @@ import com.ronaldo.cursomc.repositories.ItemPedidoRepository;
 import com.ronaldo.cursomc.repositories.PagamentoRepository;
 import com.ronaldo.cursomc.repositories.PedidoRepository;
 import com.ronaldo.cursomc.services.exceptions.ObjectNotFoundException;
-import com.ronaldo.cursomc.services.BoletoService;
 
 @Service
 public class PedidoService {
@@ -33,6 +32,9 @@ public class PedidoService {
 	
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private EmailService emailService;
 
 
 	@Autowired
@@ -70,10 +72,10 @@ public class PedidoService {
 			ip.setPedido(obj);
 		}
 		
-		ipRepository.saveAll(obj.getItens());
+		ipRepository.saveAll(obj.getItens());		
+		//System.out.println(obj);
+		emailService.sendOrderConfirmationEmail(obj);
 		
-		System.out.println(obj);
-
 		return obj;
 	}
 
