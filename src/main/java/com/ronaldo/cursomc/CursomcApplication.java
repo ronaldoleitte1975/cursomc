@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CursomcApplication implements CommandLineRunner {
 
+	//@Autowired
+	//private S3Service s3Service;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -14,6 +16,8 @@ public class CursomcApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		
+
+		//s3Service.uploadFile("C:\\temp\\fotos\\ana.jpg");
+
 	}
 }
